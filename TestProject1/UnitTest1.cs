@@ -47,13 +47,13 @@ namespace TestProject1
             var element = driver.FindElement(By.CssSelector("a[data-title=\"Красота и здоровье\"]"));
             new Actions(driver).MoveToElement(element).Perform();
             driver.FindElement(By.CssSelector("a[data-title=\"Зубные щетки\"]")).Click();
-            var el1 = driver.FindElement(By.XPath("//*[@id='app-filter']/div/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/input[1]"));
-            el1.Clear();
-            el1.SendKeys("999");
-            var el2 = driver.FindElement(By.XPath("//*[@id='app-filter']/div/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/input[2]"));
-            el2.Clear();
-            el2.SendKeys("1999");
-            el2.SendKeys(Keys.Enter);
+            var el1 = driver.FindElements(By.XPath(".//input[@class=\"e10fhmjh0 css-18h0chl e1rnnvis0\"]"));
+            el1[1].Clear();
+            el1[1].SendKeys("999");
+            var el2 = driver.FindElements(By.XPath(".//input[@class=\"epja35w0 css-1hvig8d e1rnnvis0\"]"));
+            el2[1].Clear();
+            el2[1].SendKeys("1999");
+            el2[1].SendKeys(Keys.Enter);
             new WebDriverWait(driver, TimeSpan.FromSeconds(5))
                 .Until(x => driver.FindElement(By.XPath(".//*[text()='от 999 ₽ до 1 999 ₽']")));
             var vals = driver.FindElements(By.XPath(".//div[contains(@class,\"product_data__gtm-js\")]"));
